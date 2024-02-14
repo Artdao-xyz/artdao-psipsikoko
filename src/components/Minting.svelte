@@ -51,7 +51,8 @@
         console.log(event.clientX, event.clientY);
     }
 </script>
-<div class={`transition-height duration-2000 select-none bg-pink-100 relative m-auto flex items-center justify-center border-pink-200 rounded-xl border-2 shadow-3xl aspect-video z-20 ${start ? "max-h-full max-w-full" : "max-h-[360px] max-w-full"}`}>
+<!-- <div class={`transition-height duration-2000 select-none bg-pink-100 relative m-auto flex items-center justify-center border-pink-200 rounded-xl border-2 shadow-3xl aspect-video z-20 ${start ? "max-h-full max-w-full" : "max-h-[360px] max-w-full"}`}> -->
+<div class={`select-none bg-blue-200 relative m-auto flex items-center justify-center border-blue-200 rounded-sm border-2 aspect-video z-20 max-h-full max-w-full`}>
     <!-- BACKGROUND -->
 
     <div class="absolute right-0 top-0 z-20">
