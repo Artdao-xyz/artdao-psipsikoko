@@ -1,9 +1,12 @@
 <script>
+	import { onMount } from "svelte";
     import "../style.css";
     import Minting from "/src/components/Minting.svelte";
     import Zine from "/src/components/Zine.svelte";
-
+    import { experience } from "/src/store.js";
+    
     let isChecked = true;
+    let minting = false;
 
     const images = [
         '/kokos/koko-000.png',
@@ -16,12 +19,18 @@
         '/kokos/koko-007.png',
     ];
 
-
     function handleToggle() {
         isChecked = !isChecked;
     }
+    onMount(() => {
+        const store = experience.subscribe(value => {
+            minting = value;
+        });
 
-    $: console.log(isChecked)
+        return () => {
+            store.unsubscribe();
+        }
+    });
     
 </script>
 
@@ -62,13 +71,13 @@
             </div>
         </div>
 
-        <Minting minting={true}/>
-
-        <!-- <div class="w-full bg-green-100 h-1/3 mt-8 flex items-center justify-center border-2 border-green-200 rounded-xl">
-            <h1 class="text-2xl">Hammer</h1>
+        <Minting/>
+        
+        <!-- <div class="">
+            <img src="/minting/psipsikoko-minting.png" alt="">
         </div> -->
 
-        <div class="bg-[#FFD700]">
+        <div class="mt-8 bg-cover bg-center h-full" style="background-image: url('/kokos/kokos-bg.jpg');">
             <div class="flex items-center justify-between p-16">
                 <div>
                     <h1 class="font-bold">ADOPTED KOKO'S</h1>
@@ -78,14 +87,14 @@
                     <div class="text-sm flex items-center gap-2"><span class="font-bold">10/100</span><img src="/available.svg" alt=""> RESERVE PRICE: <span class="font-bold">0 ETH / 0.00 USD</span></div>                    
                     <div class="text-sm"><span class="font-bold"></span> TOTAL COLLECTED:  <span class="font-bold"> 0.5 ETH / 0.00 USD</span></div>
                 </div>
-                <button class="px-8 py-2 shadow-md border-2 border-black uppercase text-sm font-bold">collect yours</button>
+                <button class="bg-white px-8 py-2 shadow-md border-2 border-black uppercase text-sm font-bold">collect yours</button>
 
             </div>
             <div class="grid grid-cols-4 pb-16">
                 {#each images as image,  index (image)}
                 <div key={index} class="">
                     <p class="text-center font-bold py-2">KOKO #00{index}</p>
-                    <a href={"#"}><img src={image} alt class="w-fit h-2/3 mx-auto my-auto object-cover shadow-2xl rounded-sm"/></a>
+                    <a href={"#"}><img src={image} alt class="w-fit h-2/3 mx-auto my-auto object-cover shadow-2xl rounded-md"/></a>
                     <p class="font-light text-xs text-center uppercase py-1">Adopted BY: 0xb32.....913</p>
                   </div>
                 {/each}

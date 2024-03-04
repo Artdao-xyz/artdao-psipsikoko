@@ -1,15 +1,27 @@
 <script>
+	import { onMount } from "svelte";
     import Minting from "/src/components/Minting.svelte"
+    import { experience } from "/src/store.js";
 
     let minting = false;
 
-    $: console.log(minting)
+
+    onMount(() => {
+        const store = experience.subscribe(value => {
+            minting = value;
+        });
+
+        return () => {
+            // store.unsubscribe();
+        }
+    });
 
     const startExperience = () => {
-        console.log('minting')
-        minting = true;
+        experience.set(true);
         // question = 1;
     }
+
+    $: console.log(minting)
 
 </script>
 
@@ -17,7 +29,7 @@
 
     <img class="absolute w-full h-full inset-0 rounded-xl object-contain" src="/zine-background.png" alt="Zine Garden">
 
-    <img class="absolute w-full" src="/zine-flowers.png" alt="Psipsikoko flower">
+    <img class="absolute w-1/4 left-4 bottom-0" src="/zine-flowers.png" alt="Psipsikoko flower">
 
     <a class="absolute w-fit p-4 top-0 left-1/2 -translate-x-1/2" href="/"><img class="w-full" src="/zine-logo.png" alt="Psipsikoko logo"></a>
 
@@ -29,11 +41,11 @@
 
     <a class="absolute w-fit bottom-0 left-0 z-10 origin-bottom-left scale-[0.15]" href=""><img class="" src="/zine-chatbot.png" alt="Zine Chatbot"></a>
     
-    <a class="transition-transform duration-300 ease-in-out hover:scale-[0.4] absolute w-full scale-[0.35] z-20" on:click={startExperience} href={""}><img src="/zine-minting.png" alt="Zine Minting"></a>
+    <a class="transition-transform duration-300 ease-in-out hover:scale-[0.2] top-1/4 left-52 absolute w-full scale-[0.15]" on:click={startExperience} href={""}><img src="/zine-minting.png" alt="Zine Minting"></a>
 
     <img class="absolute w-full left-1/4 scale-[0.2] z-10" src="/zine-oink.png" alt="Zine Oink">
 
-    <img class="absolute w-full top-1/4 scale-[0.2] z-10" src="/zine-lore.png" alt="Zine Lore">
+    <img class="absolute h-full w-full -left-52 scale-[0.35] z-10" src="/zine-lore.png" alt="Zine Lore">
 
     <img class="absolute w-full left-10 top-80 origin-top-left scale-[0.075] z-10" src="/zine-calamarcin.png" alt="Zine Calamarcin">
 
@@ -45,7 +57,7 @@
 
 
     {#if minting}
-        <Minting minting={minting}/>
+        <Minting/>
     {/if}
 
 </div>
