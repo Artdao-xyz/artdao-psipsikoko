@@ -4,6 +4,7 @@
     import Minting from "/src/components/Minting.svelte";
     import Zine from "/src/components/Zine.svelte";
     import { experience } from "/src/store.js";
+	import Scrapbook from "../components/Scrapbook.svelte";
     
     let isChecked = true;
     let minting = false;
@@ -34,10 +35,11 @@
     
 </script>
 
-<div class="max-w-[1440px] h-screen mx-auto p-8 font-clash-display">
+<!-- <div class="max-w-[1440px] h-screen mx-auto p-8 font-clash-display"> -->
+<div class="h-screen mx-auto font-clash-display">
 
-    <div class="flex items-center gap-2 justify-between mb-4">
-        <a href={"/"}><img src="/artdao.svg" alt=""></a>
+    <div class="flex items-center gap-2 p-8 justify-between mb-4">
+        <a href={"/"}><img loading="lazy" src="/artdao.svg" alt=""></a>
         <span class="ms-3 text-sm font-medium text-black"></span>
         <label class="relative inline-flex items-center cursor-pointer">
             <input on:change={handleToggle} type="checkbox" value="" class="sr-only peer">
@@ -50,12 +52,9 @@
 
     
     {#if isChecked}
-        <!-- <div class="w-full bg-blue-100 h-1/3 mb-8 flex items-center justify-center border-2 border-blue-200 rounded-xl">
-            <h1 class="text-2xl">Mural</h1>
-        </div> -->
-
+    <!-- MURAL -->
         <div>
-            <a href={"#"}><img class="h-full" src="/mural.png" alt="Mural"></a>
+            <a href={"#"}><img loading="lazy" class="h-full mx-auto" src="/mural.png" alt="Mural"></a>
 
             <div class="flex items-center justify-between p-16">
                 <div>
@@ -63,18 +62,19 @@
                     <p class="uppercase text-xs">by Frenetik Void and Julian Brangold</p>
                 </div>
                 <div>
-                    <div class="text-sm flex items-center gap-2"><span class="font-bold">1/1</span><img src="/available.svg" alt=""> RESERVE PRICE: <span class="font-bold">0 ETH / 0.00 USD</span></div>
-                    <div class="text-sm flex items-center gap-2"><span class="font-bold"><img src="/alarm.svg" alt=""></span>[OPEN FOR BIDS]<span class="font-bold"></span></div>
+                    <div class="text-sm flex items-center gap-2"><span class="font-bold">1/1</span><img loading="lazy" src="/available.svg" alt=""> RESERVE PRICE: <span class="font-bold">0 ETH / 0.00 USD</span></div>
+                    <div class="text-sm flex items-center gap-2"><span class="font-bold"><img loading="lazy" src="/alarm.svg" alt=""></span>[OPEN FOR BIDS]<span class="font-bold"></span></div>
                 </div>
                     
                 <button class="px-8 py-2 shadow-md border-2 border-black uppercase text-sm font-bold">place bid</button>
             </div>
         </div>
 
+    <!-- MINTING -->
         <Minting/>
         
         <!-- <div class="">
-            <img src="/minting/psipsikoko-minting.png" alt="">
+            <img loading="lazy" src="/minting/psipsikoko-minting.png" alt="">
         </div> -->
 
         <div class="mt-8 bg-cover bg-center h-full" style="background-image: url('/kokos/kokos-bg.jpg');">
@@ -84,7 +84,7 @@
                     <p class="uppercase text-xs">From the Koko's collection</p>
                 </div>
                 <div>
-                    <div class="text-sm flex items-center gap-2"><span class="font-bold">10/100</span><img src="/available.svg" alt=""> RESERVE PRICE: <span class="font-bold">0 ETH / 0.00 USD</span></div>                    
+                    <div class="text-sm flex items-center gap-2"><span class="font-bold">10/100</span><img loading="lazy" src="/available.svg" alt=""> RESERVE PRICE: <span class="font-bold">0 ETH / 0.00 USD</span></div>                    
                     <div class="text-sm"><span class="font-bold"></span> TOTAL COLLECTED:  <span class="font-bold"> 0.5 ETH / 0.00 USD</span></div>
                 </div>
                 <button class="bg-white px-8 py-2 shadow-md border-2 border-black uppercase text-sm font-bold">collect yours</button>
@@ -94,7 +94,7 @@
                 {#each images as image,  index (image)}
                 <div key={index} class="">
                     <p class="text-center font-bold py-2">KOKO #00{index}</p>
-                    <a href={"#"}><img src={image} alt class="w-fit h-2/3 mx-auto my-auto object-cover shadow-2xl rounded-md"/></a>
+                    <a href={"#"}><img loading="lazy" src={image} alt class="w-fit h-2/3 mx-auto my-auto object-cover shadow-2xl rounded-md"/></a>
                     <p class="font-light text-xs text-center uppercase py-1">Adopted BY: 0xb32.....913</p>
                   </div>
                 {/each}
@@ -103,6 +103,7 @@
         
     {:else}
         <Zine/>
+        <!-- <Scrapbook/> -->
     {/if}
 
 
