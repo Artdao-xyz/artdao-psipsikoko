@@ -38,7 +38,7 @@
 <!-- <div class="max-w-[1440px] h-screen mx-auto p-8 font-clash-display"> -->
 <div class="h-screen mx-auto font-clash-display">
 
-    <div class="flex items-center gap-2 p-8 justify-between mb-4">
+    <div class="flex items-center gap-2 px-2 py-6 justify-between">
         <a href={"/"}><img loading="lazy" src="/artdao.svg" alt=""></a>
         <span class="ms-3 text-sm font-medium text-black"></span>
         <label class="relative inline-flex items-center cursor-pointer">

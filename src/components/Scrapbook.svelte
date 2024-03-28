@@ -14,7 +14,7 @@ onMount(async () => {
     const pageFlip = new PageFlip(pageflipHtml, { 
         width: window.innerWidth, 
         height: window.innerHeight, 
-        size: 'stretch', 
+        // size: 'stretch', 
         drawShadow: false, 
         maxShadowOpacity: 0.1, 
         showCover: true
@@ -39,9 +39,6 @@ onMount(async () => {
         <div class="my-page" >
             <img src='/book/page3.png' alt="page3">
         </div>
-        <!-- <div class="my-page" >
-            <img src='/book/page3.png' alt="page3">
-        </div>
         <div class="my-page" >
             <img src='/book/page3.png' alt="page3">
         </div>
@@ -53,7 +50,10 @@ onMount(async () => {
         </div>
         <div class="my-page" >
             <img src='/book/page3.png' alt="page3">
-        </div> -->
+        </div>
+        <div class="my-page" >
+            <img src='/book/page3.png' alt="page3">
+        </div>
         <div class="my-page">
             <img src='/book/page4.png' alt="page4">
         </div>
