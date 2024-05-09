@@ -7,3 +7,12 @@
 	src: url('/fonts/ClashDisplay-Variable.woff2');
 	font-style: normal;
 }
+@font-face {
+	font-family: 'Century';
+	src: url('/fonts/Century-Regular.woff');
+	font-style: normal;
+}
+
+html {
+    overflow-x: hidden;
+}

@@ -5,6 +5,7 @@ export default {
       extend: {
         fontFamily: {
             'clash-display': "ClashDisplay, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+            'century': "Century, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
         },
         boxShadow: {
             '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
@@ -15,10 +16,14 @@ export default {
         transitionProperty: {
             'max-height': 'height',
         },
+        animation: {
+            bounce: 'bounce 0.55s linear infinite',
+        }
       }
     },
     plugins: [
         require('tailwindcss-animated'),
-        require('tailwind-animatecss')
+        require('tailwind-animatecss'),
+        require('tailwindcss-text-fill-stroke')
       ],
   };
