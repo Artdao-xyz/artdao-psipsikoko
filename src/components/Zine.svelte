@@ -201,7 +201,7 @@
         </a>
 
         <!-- BAT -->
-        <a on:click={playBat} href={"#"} class="hidden">
+        <a on:click={playBat} href={"#"} class="">
             <div class="lg:right-96 lg:top-96 absolute xl:h-auto xl:w-auto">
                 <!-- <img class="rotating-bat" src="/zine/bat.png" alt="bat" /> -->
                 <img bind:this={bat} class="rotating-bat w-32 h-12" src="/zine/bat-gif.gif" alt="bat" />

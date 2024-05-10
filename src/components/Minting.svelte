@@ -81,11 +81,11 @@
                     <p class="text-right">10 ETH</p>
                 </div>
 
-                <button on:click={()=>{question++}} class="w-32 h-32 xl:w-72 xl:h-12" type="submit"><img class="h-fit w-fit" src="/minting/adopt-button.png" alt=""></button>
+                <button on:click={()=>{question++}} class="w-32 h-32 xl:w-72 xl:h-12" type="submit"><img class="w-full" src="/minting/adopt-button.png" alt=""></button>
             </div>
 
         {:else}
-            <img loading="lazy" in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="h-fit w-full object-cover" src="/minting/minting-background.png" alt="Q1 background">
+            <img loading="lazy" in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="w-full object-cover" src="/minting/minting-background.png" alt="Q1 background">
         {/if}
             
         <!-- BLINKING -->
@@ -100,7 +100,7 @@
     <!-- QUESTION 1 -->                
     {#if question == 1}
 
-        <svg in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="absolute left-1/2 -translate-x-1/2 top-0 h-fit w-full object-cover" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2436 1419">
+        <svg in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="absolute left-1/2 -translate-x-1/2 top-0 w-full object-cover" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2436 1419">
             <image width="2436" height="1419" href="/minting/minting-01.png"></image> 
             <a on:click={()=> { question++ }} href={"#"}>
             <rect x="1478" y="650" fill="#fff" opacity="0" width="636" height="90"></rect>

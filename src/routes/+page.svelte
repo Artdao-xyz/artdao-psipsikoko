@@ -55,7 +55,7 @@
     {#if isChecked}
     <!-- MURAL -->
         <div class="">
-            <a href={"#"}><img loading="lazy" class="h-fit mx-auto" src="/site/mural.png" alt="Mural"></a>
+            <a href={"#"}><img loading="lazy" class="w-full mx-auto" src="/site/mural.png" alt="Mural"></a>
             <div class="flex items-center justify-between p-4 xl:p-8">
                 <div>
                     <h1 class="font-bold text-xs xl:text-sm">PSIPSIKOKO MURAL</h1>
