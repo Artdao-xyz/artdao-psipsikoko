@@ -41,8 +41,6 @@ onMount(async () => {
 </script>
 
 <div bind:this={scrapbook}
-    in:fade={{ delay: 50, duration: 50 }}
-    out:fade={{ delay: 50, duration: 50 }}  
     class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex flex-col gap-2">
 
     <a on:click={closeScrapbook} href={"#"} class="self-center">

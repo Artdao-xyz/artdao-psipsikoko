@@ -21,6 +21,7 @@
 	"type": "module",
 	"dependencies": {
 		"animate.css": "^4.1.1",
+		"js-confetti": "^0.12.0",
 		"page-flip": "^2.0.7",
 		"tailwind-animatecss": "^1.0.0",
 		"tailwindcss-animated": "^1.0.1"

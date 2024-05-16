@@ -3,7 +3,7 @@
     import "../style.css";
     import Minting from "/src/components/Minting.svelte";
     import Zine from "/src/components/Zine.svelte";
-    import { experience } from "/src/store.js";
+    import { mintingStore } from "/src/store.js";
 	import Scrapbook from "../components/Scrapbook.svelte";
     
     let isChecked = true;
@@ -24,7 +24,7 @@
         isChecked = !isChecked;
     }
     onMount(() => {
-        const store = experience.subscribe(value => {
+        mintingStore.subscribe(value => {
             minting = value;
         });
 

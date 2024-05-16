@@ -1,12 +1,14 @@
 <script>
 	import { onMount } from "svelte";
     import Minting from "/src/components/Minting.svelte"
-    import { experience } from "/src/store.js";
+    // import { experience } from "/src/store.js";
 	import Scrapbook from "./Scrapbook.svelte";
-    import { scrapbookStore } from "/src/store.js";
+	import ArtistBio from "./ArtistBio.svelte";
+    import { scrapbookStore, artistBioStore, mintingStore } from "/src/store.js";
+    import { fade } from 'svelte/transition';
 
-    let mintingExperience = false;
-    let scrapbookExperience = false;
+    let mintingExperience;
+    let scrapbookExperience;
     let audioLoop;
     let radio;
     let audioBat;
@@ -28,12 +30,16 @@
     let audioPlayer;
 
     onMount(() => {
-        const store = experience.subscribe(value => {
+        mintingStore.subscribe(value => {
             mintingExperience = value;
         });
 
         scrapbookStore.subscribe(value => {
             scrapbookExperience = value;
+        });
+
+        artistBioStore.subscribe(value => {
+            artistBio = value;
         });
         
         logo.classList.toggle("logo")
@@ -47,7 +53,7 @@
     });
 
     const startExperience = () => {
-        experience.set(true);
+        mintingStore.set(true);
         // question = 1;
     }
 
@@ -109,12 +115,14 @@
         audioCamaroncin.play();
     }
 
-    const closeBio = () =>{
-        artistBio.classList.add('hidden')
-    }
 
-    const openBio = () => {
-        artistBio.classList.remove('hidden')
+    const toggleMute = () => {
+        audioPlayer.muted = !audioPlayer.muted
+        audioLoop.muted = !audioLoop.muted
+        audioBat.muted = !audioBat.muted
+        audioCamaroncin.muted = !audioCamaroncin.muted
+        audioFlorcita.muted = !audioFlorcita.muted
+        audioOink.muted = !audioOink.muted
     }
 
     // Shuffle the array randomly
@@ -154,7 +162,7 @@
 <img class="select-none absolute inset-0 object-cover h-full w-full" src="/zine/background.png" alt="background" usemap="#image-map-zine"/>
 <!-- <div class="relative h-screen bg-red-200"> -->
     
-    <div class="max-w-[1440px] h-screen mx-auto relative ">
+    <div class="max-w-full h-screen mx-auto relative">
     <!-- <div class="bg-blue-200 xl:bg-red-200 2xl:bg-green-200 max-w-[1440px] h-screen mx-auto relative "> -->
 
         <!-- BACKGROUND MUSIC -->
@@ -170,33 +178,30 @@
         <!-- RADIO -->
         <a on:click={playAudio} href={"#"} class="">
             <div class="right-12 top-40 w-32 h-24 lg:right-52 lg:top-56 absolute xl:h-auto xl:w-auto">
-                <img bind:this={radio} class="" src="/zine/radio.png" alt="radio" />
+                <img bind:this={radio} class="hover:animatecss hover:animatecss-shakeY hover:brightness-110" src="/zine/radio.png" alt="radio" />
             </div>
         </a>
         <audio bind:this={audioLoop} src="/sound/radio-loop.mp3"></audio>
 
         <!-- SOCIAL MEDIA -->
         <a href="https://www.instagram.com/psipsikoko/" target="_blank" class="">
-            <div class="top-28 right-6 w-10 h-9 lg:right-24 lg:top-20 absolute xl:h-auto xl:w-auto">
-                <img bind:this={redes} class="hover:scale-125" src="/zine/redes.png" alt="redes"/>
+            <div class="top-28 right-6 w-10 h-9 lg:right-0 lg:top-20 absolute xl:h-auto xl:w-auto">
+                <img bind:this={redes} class="hover:scale-125 hover:brightness-110" src="/zine/redes.png" alt="redes"/>
             </div>
         </a>
 
         <!-- ARTISTS BIO -->
-        <a href={"#"} class="">
+        <a href={"#"} class="" on:click={()=>{artistBioStore.set(true)}}>
             <div class="bottom-12 right-8 w-24 h-16 lg:right-24 lg:bottom-10 absolute xl:h-auto xl:w-auto">
-                <a on:click={openBio} href={"#"}><img bind:this={artists} class="hover:animatecss hover:animatecss-pulse hover:animate-infinite" src="/zine/artists.png" alt="artists" /></a>
+                <a href={"#"}><img bind:this={artists} class="hover:animatecss hover:animatecss-pulse hover:animate-infinite hover:brightness-110" src="/zine/artists.png" alt="artists" /></a>
             </div>
         </a>
-        <div bind:this={artistBio} class="hidden absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-20 w-4/5 ">
-            <a on:click={closeBio} class="absolute right-0 top-0 p-4"  href={"#"}><img src="/close.svg" alt="close"></a>
-            <img class="shadow-md shadow-black rounded-md" src="/zine/artist-about.jpg" alt="Artist About">
-        </div>
+
 
         <!-- CHATBOT -->
         <a href={"https://t.me/psipsikoko"} target="_blank" class="">
-            <div class="left-10 bottom-20 w-20 h-24 lg:left-44 lg:bottom-10 absolute xl:h-auto xl:w-auto">
-                <img bind:this={chatbot} class="" src="/zine/bot.png" alt="chatbot" />
+            <div class="left-10 bottom-20 w-20 h-24 lg:left-0 lg:bottom-10 absolute xl:h-auto xl:w-auto">
+                <img bind:this={chatbot} class="hover:animatecss hover:animatecss-rubberBand hover:brightness-110" src="/zine/bot.png" alt="chatbot" />
             </div>
         </a>
 
@@ -212,24 +217,21 @@
         <!-- HAMMER -->
         <a href={"#"} class="">
             <div class="left-20 top-28 w-16 h-16 lg:left-12 lg:top-16 absolute xl:h-auto xl:w-auto">
-                <img bind:this={hammer} class="hover:animate-spin hover:animate-duration-[2000ms]" src="/zine/hammer.png" alt="hammer" />
+                <img bind:this={hammer} class="hover:animate-spin hover:animate-duration-[2000ms] hover:brightness-110" src="/zine/hammer.png" alt="hammer" />
             </div>
         </a>
 
         <!-- SCRAPBOOK -->
         <a on:click={() => scrapbookStore.set(true)} href={"#"} class="">
-            <div class="bottom-32 right-12 w-36 h-24 lg:left-1/2 lg:bottom-44 absolute xl:h-auto xl:w-auto">
-                <img bind:this={scrapbook} class="hover:animate-wiggle hover:animate-infinite hover:animate-ease-in-out" src="/zine/scrapbook.png" alt="scrapbook" />
+            <div class="top-72 left-20 w-56 h-40 lg:left-96 lg:top-56 absolute xl:h-auto xl:w-auto">
+                <img bind:this={scrapbook} class="hover:animate-wiggle hover:animate-infinite hover:animate-ease-in-out hover:brightness-110" src="/zine/scrapbook.png" alt="scrapbook" />
             </div>
         </a>
-        {#if scrapbookExperience}
-            <Scrapbook/>
-        {/if}
 
         <!-- MINTING KOKIS -->
         <a on:click={()=>{mintingExperience = true}} href={"#"} class="">
-            <div class="top-72 left-20 w-56 h-40 lg:left-1/3 lg:top-1/3 absolute xl:h-auto xl:w-auto">
-                <img bind:this={minting} class="" src="/zine/minting.png" alt="minting"/>
+            <div class="bottom-32 right-12 w-36 h-24 lg:left-1/2 lg:bottom-44 absolute xl:h-auto xl:w-auto">
+                <img bind:this={minting} class="hover:animatecss hover:animatecss-wobble hover:brightness-110" src="/zine/minting.png" alt="minting"/>
             </div>
         </a>
 
@@ -243,7 +245,7 @@
 
         <!-- FLOWER -->
         <a on:click={playManguera2} href={"#"} class="">
-            <div class="bottom-4 left-32 w-10 h-10 lg:left-80 lg:bottom-0 absolute xl:h-auto xl:w-auto">
+            <div class="bottom-4 left-32 w-10 h-10 lg:left-72 lg:bottom-0 absolute xl:h-auto xl:w-auto">
                 <img bind:this={florcita} class="" src="/zine/florcita.png" alt="florcita" />
             </div>
         </a>
@@ -251,11 +253,33 @@
 
         <!-- CAMARONCIN -->
         <a on:click={playManguera3} href={"#"} class="">
-            <div class="top-52 left-4 w-20 h-20 lg:left-32 lg:top-1/2 absolute xl:h-auto xl:w-auto">
-                <img bind:this={camaroncin} class="hover:animatecss hover:animatecss-jello" src="/zine/calamarcin.png" alt="calamarcin"/>
+            <div class="top-52 left-4 w-20 h-20 lg:left-32 lg:top-96 absolute xl:h-auto xl:w-auto">
+                <img bind:this={camaroncin} class="hover:animatecss hover:animatecss-jello hover:brightness-110" src="/zine/calamarcin.png" alt="calamarcin"/>
             </div>
         </a>
         <audio bind:this={audioCamaroncin} src="/sound/manguera_3.mp3"></audio>
+
+        <a class="absolute right-0 bottom-0" on:click={toggleMute} href={"#"}><img src="/zine/mute.svg" alt="mute"></a>
+
+        {#if scrapbookExperience}
+        <div 
+            class="w-full h-full backdrop-blur-md"
+            in:fade={{ delay: 50, duration: 50 }}
+            out:fade={{ delay: 50, duration: 50 }}  
+        >
+            <Scrapbook/>
+        </div>
+        {/if}
+        
+        {#if artistBio}
+        <div 
+            class="w-full h-full backdrop-blur-md"
+            in:fade={{ delay: 50, duration: 50 }}
+            out:fade={{ delay: 50, duration: 50 }}  
+        >
+            <ArtistBio/>
+        </div>
+        {/if}
 
     </div>
     
@@ -263,7 +287,7 @@
 <!-- </div> -->
     
     {#if mintingExperience}
-    <div class="absolute left-0 w-full top-0">
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full ">
         <Minting/>
     </div>
     {/if}
