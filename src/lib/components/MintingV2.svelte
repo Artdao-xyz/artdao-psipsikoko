@@ -13,6 +13,10 @@
     let fadeDuration = 300;
     let jsConfetti = null;
 
+    export let images;
+
+    console.log(images)
+
 
     const startExperience = () => {
         start = true;
@@ -65,13 +69,13 @@
 </script>
 
 <div class="relative">
-<button on:click={startExperience}><img draggable="false" class="object-contain h-full" src="/minting/psipsikoko-minting.png" alt="Minting"></button>
+<button on:click={startExperience}><img draggable="false" class="object-contain h-full" src={images[6]} alt="Minting"></button>
 
 {#if start}
 
     {#if question == 0}
         <div transition:fade={{ delay: 150, duration: fadeDuration }} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full backdrop-blur-sm">
-            <img class="relative select-none mx-auto" src="/minting/adopt-koki.png" alt="adopt koki">
+            <img class="relative select-none mx-auto" src={images[0]} alt="adopt koki">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center flex-col w-1/2 h-1/2 xl:w-96 xl:h-96 gap-2 xl:gap-6 m-auto font-century uppercase tracking-[0.3em]">
                 <h1 class="select-none text-lg xl:text-5xl text-center">adopti ami<br/>koki</h1>
                 <img class="absolute w-10 h-10 xl:w-fit xl:h-fit right-5 xl:right-0 top-5 xl:top-10" src="/minting/heart.png" alt="heart">
@@ -84,13 +88,13 @@
                     <p class="text-right">10 ETH</p>
                 </div>
 
-                <button on:click={()=>{question++}} class="w-32 h-32 xl:w-72 xl:h-12" type="submit"><img class="w-full" src="/minting/adopt-button.png" alt=""></button>
+                <button on:click={()=>{question++}} class="w-32 h-32 xl:w-72 xl:h-12" type="submit"><img class="w-full" src={images[1]} alt=""></button>
             </div>
         </div>
 
     <!-- QUESTION 1 -->
     {:else if question == 1}
-        <img class="absolute left-0 top-0 w-full object-cover" src="/minting/minting-background.png" alt="Q1 background">
+        <img class="absolute left-0 top-0 w-full object-cover" src={images[2]} alt="Q1 background">
 
         <svg transition:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 w-full object-cover" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2436 1419">
             <image width="2436" height="1419" href="/minting/minting-01.png"></image> 
@@ -107,8 +111,8 @@
 
     <!-- QUESTION 2 -->
     {:else if question == 2}
-        <img class="absolute left-0 top-0 w-full object-cover" src="/minting/minting-background.png" alt="Q1 background">
-        <img in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 h-full w-full" src="/minting/minting-smile2.png" alt="Q1 background">
+        <img class="absolute left-0 top-0 w-full object-cover" src={images[2]} alt="Q1 background">
+        <img in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 h-full w-full" src={images[4]} alt="Q1 background">
         <svg in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 h-full w-full" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2436 1419">
             <image width="2436" height="1419" href="/minting/minting-02.png"></image> 
             <a on:click={goWrong} href={"#"}>
@@ -123,8 +127,8 @@
         </svg>
     <!-- QUESTION 3 -->
     {:else if question == 3}
-        <img class="absolute left-0 top-0 w-full object-cover" src="/minting/minting-background.png" alt="Q1 background">
-        <img in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 h-full w-full" src="/minting/minting-smile1.png" alt="Q1 background">
+        <img class="absolute left-0 top-0 w-full object-cover" src={images[2]} alt="Q1 background">
+        <img in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 h-full w-full" src={images[3]} alt="Q1 background">
         <svg in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 h-full w-full" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2436 1419">
             <image width="2436" height="1419" href="/minting/minting-03.png"></image> 
             <a on:click={goWrong} href={"#"}>
@@ -141,7 +145,7 @@
 
         <!-- WRONG -->
     {#if wrong }
-        <img transition:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 w-full object-cover" src="/minting/wrong.png" alt="Q1 background">
+        <img transition:fade={{ duration: fadeDuration }} class="absolute left-0 top-0 w-full object-cover" src={images[5]} alt="Q1 background">
     {/if}
 
     {#if finished}

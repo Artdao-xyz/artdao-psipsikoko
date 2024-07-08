@@ -1,14 +1,5 @@
 <script>
-        const images = [
-        '/kokos/koko-000.png',
-        '/kokos/koko-001.png',
-        '/kokos/koko-002.png',
-        '/kokos/koko-003.png',
-        '/kokos/koko-004.png',
-        '/kokos/koko-005.png',
-        '/kokos/koko-006.png',
-        '/kokos/koko-007.png',
-    ];
+    export let images;
 </script>
 
 <div class="">

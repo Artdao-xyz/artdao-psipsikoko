@@ -1,5 +1,8 @@
+<script>
+    export let images;
+</script>
 <div class="">
-    <a href={"#"}><img  class="w-full mx-auto" src="/site/mural.png" alt="Mural"></a>
+    <a href={"#"}><img  class="w-full mx-auto" src={images[0]} alt="Mural"></a>
     <div class="flex items-center justify-between p-4 xl:p-8">
         <div>
             <h1 class="font-bold text-xs xl:text-sm">PSIPSIKOKO MURAL</h1>
