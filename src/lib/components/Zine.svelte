@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from "svelte";
-    import Minting from "/src/components/Minting.svelte"
+    import Minting from "$lib/components/Minting.svelte"
     // import { experience } from "/src/store.js";
-	import Scrapbook from "./Scrapbook.svelte";
-	import ArtistBio from "./ArtistBio.svelte";
-    import { scrapbookStore, artistBioStore, mintingStore } from "/src/store.js";
+	import Scrapbook from "$lib/components/Scrapbook.svelte";
+	import ArtistBio from "$lib/components/ArtistBio.svelte";
+    import { scrapbookStore, artistBioStore, mintingStore } from "$lib/components/store.js";
     import { fade } from 'svelte/transition';
 
     let mintingExperience;
@@ -157,10 +157,10 @@
 
 </script>
 
-<!-- <div class={`select-none relative m-auto flex items-center justify-center rounded-xl shadow-3xl aspect-video max-h-full max-w-full`}> -->
+<div class="relative">
 
-<img class="select-none absolute inset-0 object-cover h-full w-full" src="/zine/background.png" alt="background" usemap="#image-map-zine"/>
-<!-- <div class="relative h-screen bg-red-200"> -->
+    <img class="select-none absolute inset-0 object-cover h-full w-full" src="/zine/background.png" alt="background" usemap="#image-map-zine"/>
+    <!-- <div class="relative h-screen bg-red-200"> -->
     
     <div class="max-w-full h-screen mx-auto relative">
     <!-- <div class="bg-blue-200 xl:bg-red-200 2xl:bg-green-200 max-w-[1440px] h-screen mx-auto relative "> -->
@@ -284,13 +284,13 @@
     </div>
     
 
-<!-- </div> -->
+</div>
     
-    {#if mintingExperience}
-    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full ">
-        <Minting/>
-    </div>
-    {/if}
+{#if mintingExperience}
+<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full ">
+    <Minting/>
+</div>
+{/if}
     
 
 

@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-    import { artistBioStore } from "/src/store.js";
+    import { artistBioStore } from "$lib/components/store.js";
 
     onMount(() => {
     })
