@@ -16,7 +16,7 @@
 
     </div>
 
-    <div class="relative">
+    <div class="relative py-2">
         <!-- <img class="absolute left-0 top-0 -z-10 h-full w-full object-cover" src="/kokos/kokos-bg.jpg" alt=""> -->
         <img class="absolute left-0 top-0 -z-10 h-full w-full object-cover" src="/kokos/adopted-kokis-mashmellow.png" alt="">
         <div class="grid grid-cols-2 xl:grid-cols-4 gap-y-8 gap-x-4 px-4">
@@ -24,7 +24,7 @@
             <div key={index} class="h-fit">
                 <p class="text-center font-bold text-xs xl:text-sm">KOKO #00{index}</p>
                 <a href={"#"}><img  src={image} alt class="h-full mx-auto my-2 object-cover shadow-2xl rounded-md"/></a>
-                <p class="font-light text-xs text-center uppercase py-1">Adopted BY: 0xb32.....913</p>
+                <p class="font-light text-[10px] text-center uppercase py-1">Adopted BY: 0xb32.....913</p>
             </div>
             {/each}
         </div>              

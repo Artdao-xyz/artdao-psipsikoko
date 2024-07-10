@@ -2,7 +2,7 @@
 import { onMount } from 'svelte';
 import { fade } from 'svelte/transition';
 import * as pkg from 'page-flip';
-import { scrapbookStore } from "$lib/components/store.js";
+import { scrapbookStore } from "$lib/store.js";
 
 let pageflipHtml;
 let img1, img2, img3, img4;

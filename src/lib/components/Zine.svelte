@@ -1,11 +1,12 @@
 <script>
 	import { onMount } from "svelte";
     import Minting from "$lib/components/Minting.svelte"
-    // import { experience } from "/src/store.js";
 	import Scrapbook from "$lib/components/Scrapbook.svelte";
 	import ArtistBio from "$lib/components/ArtistBio.svelte";
-    import { scrapbookStore, artistBioStore, mintingStore } from "$lib/components/store.js";
+    import { scrapbookStore, artistBioStore, mintingStore } from "$lib/store.js";
     import { fade } from 'svelte/transition';
+
+    export let images;
 
     let mintingExperience;
     let scrapbookExperience;
@@ -45,7 +46,7 @@
         logo.classList.toggle("logo")
 
         // Call the function to play audio files randomly
-        playRandomAudio();
+        // playRandomAudio();
 
         return () => {
             // store.unsubscribe();
@@ -57,7 +58,7 @@
         // question = 1;
     }
 
-    $: console.log(minting)
+    // $: console.log(minting)
 
     const playAudio = () => {
         let radioInterval, objectsInterval;
@@ -157,51 +158,45 @@
 
 </script>
 
-<div class="relative">
+<div class="relative ">
 
-    <img class="select-none absolute inset-0 object-cover h-full w-full" src="/zine/background.png" alt="background" usemap="#image-map-zine"/>
+    <img class="select-none absolute inset-0 object-cover h-full w-full" src={images[2]} alt="background" usemap="#image-map-zine"/>
     <!-- <div class="relative h-screen bg-red-200"> -->
     
-    <div class="max-w-full h-screen mx-auto relative">
+    <div class="relative h-screen w-full mx-auto">
     <!-- <div class="bg-blue-200 xl:bg-red-200 2xl:bg-green-200 max-w-[1440px] h-screen mx-auto relative "> -->
 
         <!-- BACKGROUND MUSIC -->
         <audio bind:this={audioPlayer} src=""></audio>
 
         <!-- LOGO -->
-        <a href={"#"} class="">
-            <div class="left-1/2 -translate-x-1/2 top-0 absolute mt-4 w-72 h-14 xl:h-auto xl:w-auto">
-                <img bind:this={logo} class="logo" src="/zine/logo.png" alt="logo" />
-            </div>
-        </a>
+        <div class="left-1/2 -translate-x-1/2 top-0 absolute mt-4 w-72 h-14 xl:h-auto xl:w-auto">
+            <img bind:this={logo} class="logo" src={images[8]} alt="logo" />
+        </div>
 
         <!-- RADIO -->
-        <a on:click={playAudio} href={"#"} class="">
-            <div class="right-12 top-40 w-32 h-24 lg:right-52 lg:top-56 absolute xl:h-auto xl:w-auto">
-                <img bind:this={radio} class="hover:animatecss hover:animatecss-shakeY hover:brightness-110" src="/zine/radio.png" alt="radio" />
-            </div>
-        </a>
+        <button on:click={playAudio} class="right-12 top-40 w-32 h-24 lg:right-52 lg:top-56 absolute xl:h-auto xl:w-auto">
+            <img bind:this={radio} class="hover:animatecss hover:animatecss-shakeY hover:brightness-110" src={images[12]} alt="radio" />
+        </button>
         <audio bind:this={audioLoop} src="/sound/radio-loop.mp3"></audio>
 
         <!-- SOCIAL MEDIA -->
         <a href="https://www.instagram.com/psipsikoko/" target="_blank" class="">
             <div class="top-28 right-6 w-10 h-9 lg:right-0 lg:top-20 absolute xl:h-auto xl:w-auto">
-                <img bind:this={redes} class="hover:scale-125 hover:brightness-110" src="/zine/redes.png" alt="redes"/>
+                <img bind:this={redes} class="hover:scale-125 hover:brightness-110" src={images[13]} alt="redes"/>
             </div>
         </a>
 
         <!-- ARTISTS BIO -->
-        <a href={"#"} class="" on:click={()=>{artistBioStore.set(true)}}>
-            <div class="bottom-12 right-8 w-24 h-16 lg:right-24 lg:bottom-10 absolute xl:h-auto xl:w-auto">
-                <a href={"#"}><img bind:this={artists} class="hover:animatecss hover:animatecss-pulse hover:animate-infinite hover:brightness-110" src="/zine/artists.png" alt="artists" /></a>
-            </div>
-        </a>
+        <button on:click={()=>{artistBioStore.set(true)}} class="absolute bottom-12 right-8 w-24 h-16 lg:right-24 lg:bottom-10  xl:h-auto xl:w-auto">
+            <a href={"#"}><img bind:this={artists} class="hover:animatecss hover:animatecss-pulse hover:animate-infinite hover:brightness-110" src={images[1]} alt="artists" /></a>
+        </button>
 
 
         <!-- CHATBOT -->
         <a href={"https://t.me/psipsikoko"} target="_blank" class="">
             <div class="left-10 bottom-20 w-20 h-24 lg:left-0 lg:bottom-10 absolute xl:h-auto xl:w-auto">
-                <img bind:this={chatbot} class="hover:animatecss hover:animatecss-rubberBand hover:brightness-110" src="/zine/bot.png" alt="chatbot" />
+                <img bind:this={chatbot} class="hover:animatecss hover:animatecss-rubberBand hover:brightness-110" src={images[4]} alt="chatbot" />
             </div>
         </a>
 
@@ -209,7 +204,7 @@
         <a on:click={playBat} href={"#"} class="">
             <div class="lg:right-96 lg:top-96 absolute xl:h-auto xl:w-auto">
                 <!-- <img class="rotating-bat" src="/zine/bat.png" alt="bat" /> -->
-                <img bind:this={bat} class="rotating-bat w-32 h-12" src="/zine/bat-gif.gif" alt="bat" />
+                <img bind:this={bat} class="rotating-bat w-32 h-12" src={images[3]} alt="bat" />
             </div>
         </a>
         <audio bind:this={audioBat} src="/sound/corto_4.mp3"></audio>
@@ -217,28 +212,28 @@
         <!-- HAMMER -->
         <a href={"#"} class="">
             <div class="left-20 top-28 w-16 h-16 lg:left-12 lg:top-16 absolute xl:h-auto xl:w-auto">
-                <img bind:this={hammer} class="hover:animate-spin hover:animate-duration-[2000ms] hover:brightness-110" src="/zine/hammer.png" alt="hammer" />
+                <img bind:this={hammer} class="hover:animate-spin hover:animate-duration-[2000ms] hover:brightness-110" src={images[7]} alt="hammer" />
             </div>
         </a>
 
         <!-- SCRAPBOOK -->
         <a on:click={() => scrapbookStore.set(true)} href={"#"} class="">
             <div class="top-72 left-20 w-56 h-40 lg:left-96 lg:top-56 absolute xl:h-auto xl:w-auto">
-                <img bind:this={scrapbook} class="hover:animate-wiggle hover:animate-infinite hover:animate-ease-in-out hover:brightness-110" src="/zine/scrapbook.png" alt="scrapbook" />
+                <img bind:this={scrapbook} class="hover:animate-wiggle hover:animate-infinite hover:animate-ease-in-out hover:brightness-110" src={images[14]} alt="scrapbook" />
             </div>
         </a>
 
         <!-- MINTING KOKIS -->
         <a on:click={()=>{mintingExperience = true}} href={"#"} class="">
             <div class="bottom-32 right-12 w-36 h-24 lg:left-1/2 lg:bottom-44 absolute xl:h-auto xl:w-auto">
-                <img bind:this={minting} class="hover:animatecss hover:animatecss-wobble hover:brightness-110" src="/zine/minting.png" alt="minting"/>
+                <img bind:this={minting} class="hover:animatecss hover:animatecss-wobble hover:brightness-110" src={images[9]} alt="minting"/>
             </div>
         </a>
 
         <!-- PIG -->
         <a on:click={playManguera1} href={"#"} class="opacity-0">
             <div class="-right-12 top-80 w-20 lg:right-60 lg:bottom-96 absolute xl:h-auto xl:w-auto">
-                <img bind:this={oink} class="" src="/zine/oink.png" alt="oink"/>
+                <img bind:this={oink} class="" src={images[11]} alt="oink"/>
             </div>
         </a>
         <audio bind:this={audioOink} src="/sound/manguera_1.mp3"></audio>
@@ -246,7 +241,7 @@
         <!-- FLOWER -->
         <a on:click={playManguera2} href={"#"} class="">
             <div class="bottom-4 left-32 w-10 h-10 lg:left-72 lg:bottom-0 absolute xl:h-auto xl:w-auto">
-                <img bind:this={florcita} class="" src="/zine/florcita.png" alt="florcita" />
+                <img bind:this={florcita} class="" src={images[6]} alt="florcita" />
             </div>
         </a>
         <audio bind:this={audioFlorcita} src="/sound/manguera_2.mp3"></audio>
@@ -254,12 +249,12 @@
         <!-- CAMARONCIN -->
         <a on:click={playManguera3} href={"#"} class="">
             <div class="top-52 left-4 w-20 h-20 lg:left-32 lg:top-96 absolute xl:h-auto xl:w-auto">
-                <img bind:this={camaroncin} class="hover:animatecss hover:animatecss-jello hover:brightness-110" src="/zine/calamarcin.png" alt="calamarcin"/>
+                <img bind:this={camaroncin} class="hover:animatecss hover:animatecss-jello hover:brightness-110" src={images[5]} alt="calamarcin"/>
             </div>
         </a>
         <audio bind:this={audioCamaroncin} src="/sound/manguera_3.mp3"></audio>
 
-        <a class="absolute right-0 bottom-0" on:click={toggleMute} href={"#"}><img src="/zine/mute.svg" alt="mute"></a>
+        <a class="absolute right-0 bottom-0" on:click={toggleMute} href={"#"}><img src={images[10]} alt="mute"></a>
 
         {#if scrapbookExperience}
         <div 
@@ -282,7 +277,6 @@
         {/if}
 
     </div>
-    
 
 </div>
     

@@ -1,16 +1,16 @@
 <script>
     import "/src/style.css";
-    import {zineStore} from "$lib/components/store.js"
+    import {zineStore} from "$lib/store.js"
 
     const handleToggle = (e) => {
         zineStore.set(e.target.checked);
     }
 </script>
 
-<div class="font-clash-display mx-auto">
+<div class="font-clash-display mx-auto bg-green-200">
 
     <!-- SWITCH -->
-    <div class="flex items-center gap-2 px-2 py-6 justify-between">
+    <div class="flex items-center gap-2 px-2 py-3 md:py-6 justify-between">
         <a href={"/"}><img  src="/artdao.svg" alt=""></a>
         <span class="ms-3 text-sm font-medium text-black"></span>
         <label class="relative inline-flex items-center cursor-pointer">
