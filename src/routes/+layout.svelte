@@ -7,7 +7,7 @@
     }
 </script>
 
-<div class="font-clash-display mx-auto bg-green-200">
+<div class="font-clash-display mx-auto">
 
     <!-- SWITCH -->
     <div class="flex items-center gap-2 px-2 py-3 md:py-6 justify-between">
