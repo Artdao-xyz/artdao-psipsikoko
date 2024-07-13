@@ -13,7 +13,6 @@
             <div class="text-sm"><span class="font-bold"></span> TOTAL COLLECTED:  <span class="font-bold"> 0.5 ETH / 0.00 USD</span></div>
         </div>
         <button class="bg-white px-2 xl:px-8 py-2 shadow-md border-2 border-black uppercase text-xs xl:text-sm font-bold">collect yours</button>
-
     </div>
 
     <div class="relative py-2">
