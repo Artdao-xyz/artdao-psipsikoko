@@ -23,7 +23,7 @@
             {#each images as image,  index (image)}
             <div key={index} class="h-fit">
                 <p class="text-center font-bold text-xs xl:text-sm">KOKO #00{index}</p>
-                <a href={"#"}><img  src={image} alt class="h-full mx-auto my-2 object-cover shadow-2xl rounded-md"/></a>
+                <a href={"#"}><img  src={image.src} alt class="h-full mx-auto my-2 object-cover shadow-2xl rounded-md"/></a>
                 <p class="font-light text-[10px] text-center uppercase py-1">Adopted BY: 0xb32.....913</p>
             </div>
             {/each}
