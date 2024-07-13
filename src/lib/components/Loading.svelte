@@ -1,15 +1,5 @@
 <script>
-	export let progress;
-
-	let progressBar;
-	let progressBarContainer;
-	let enter = false;
-
-	$: {
-		if (progressBar) {
-			progressBar.value = progress;
-		}
-	}
+	import { progress } from "$lib/store.js"    
 </script>
 
 <!-- Loading Bar -->
@@ -17,15 +7,13 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
 	on:click|stopPropagation
-	bind:this={progressBarContainer}
 	class="cursor-default bg-white text-white font-monda fixed inset-0 flex flex-col justify-center items-center z-50 bg-cover bg-center">
     
     <img draggable="false" class="animate-spin" src="loading.png" alt="Loading">
 
 	<progress
-		bind:this={progressBar}
 		class="custom-progress-bar w-full h-1"
-		value={progress}
+		value={$progress}
 		max="100"
 	></progress>
 </div>
